@@ -9,6 +9,7 @@ import {
   Menu,
   X
 } from 'lucide-react';
+import { AuthButton } from './AuthModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,6 +43,7 @@ const Header = () => {
             <button className="px-3 py-1 text-sm hidden lg:inline">Resources</button>
             <button className="px-3 py-1 text-sm">v2.1.4</button>
           </div>
+            <AuthButton />
           <div className="flex items-center space-x-2">
             <Moon className="w-5 h-5" />
             <Twitter className="w-5 h-5 hidden sm:block" />
