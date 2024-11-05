@@ -1,13 +1,12 @@
-# pinecone-portal
+# React+Vite Web Template 2024
+
+Generic React-Vite-Tailwind boilerplate website  à la 2024. Includes basic user login.
 
 ````
-npm create vite@latest pinecone-portal -- --template react
-cd pinecone-portal
 npm install
-npm install lucide-react
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+npm run dev
 ````
+
 
 ---
 

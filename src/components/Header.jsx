@@ -21,7 +21,7 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           <div className="flex items-center">
             <img src="pinecone_beta.png" className="w-5 h-5" />
-            <span className="ml-2 font-semibold">Pinecone Portal</span>
+            <a href="/"><span className="ml-2 font-semibold">PineconePortal</span></a>
           </div>
           <div className="hidden md:flex items-center px-3 py-1 bg-gray-800 rounded-md">
             <Search className="w-4 h-4 text-gray-400" />

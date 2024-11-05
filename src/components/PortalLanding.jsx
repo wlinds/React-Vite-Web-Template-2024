@@ -2,6 +2,8 @@
 import React from 'react';
 import { Zap } from 'lucide-react';
 import Header from './Header';
+<ChartColumnDecreasing />
+import { ChartColumnDecreasing, UserCheck, AudioLines, Github, Globe } from 'lucide-react';
 
 const PortalLanding = () => {
     return (
@@ -13,7 +15,7 @@ const PortalLanding = () => {
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-12">
             <div className="space-y-6">
               <h1 className="text-4xl lg:text-6xl font-bold">
-                <span className="text-lime-400">Pinecone Portal</span>
+                <span className="text-lime-400">PineconePortal</span>
                 <br />
                 Next Generation
                 <br />
@@ -49,24 +51,24 @@ const PortalLanding = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 lg:mt-20">
             {[
               {
-                icon: <Zap className="w-8 h-8 text-purple-400" />,
-                title: "box1",
-                description: "lorem"
+                icon: <AudioLines className="w-8 h-8 text-purple-400" />,
+                title: "Release on all platforms",
+                description: "Find the best platforms your audience."
               },
               {
-                icon: <div className="w-8 h-8 bg-red-400 rounded flex items-center justify-center">J</div>,
-                title: "box2",
-                description: "lorem"
+                icon: <ChartColumnDecreasing className="w-8 h-8 rounded flex items-center justify-center" />,
+                title: "Measure your audience",
+                description: "Use the dashboard to view plots and important listener metrics."
               },
               {
                 icon: <Zap className="w-8 h-8 text-yellow-400" />,
-                title: "box3",
-                description: "lorem"
+                title: "Keep up with new trends",
+                description: "Follow genre specific trends in social media."
               },
               {
-                icon: <div className="w-8 h-8 bg-blue-400 rounded flex items-center justify-center">TS</div>,
-                title: "box4",
-                description: "lorem"
+                icon: <UserCheck className="w-8 h-8 flex items-center justify-center"/>,
+                title: "Manage your artists",
+                description: "Schedule releases, ad campaigns and plan tours."
               }
             ].map((feature, index) => (
               <div key={index} className="bg-gray-800/50 p-6 rounded-lg">
