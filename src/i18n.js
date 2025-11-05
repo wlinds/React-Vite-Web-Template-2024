@@ -4,10 +4,6 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   sv: {
     translation: {
-      // Header
-      "header.search": "Sök...",
-      "header.signIn": "Logga in",
-
       // Hero Section
       "hero.title": "SR Player",
       "hero.subtitle": "Blixtsnabb radio från Sveriges Radio",
@@ -16,7 +12,6 @@ const resources = {
       "hero.cta.learnMore": "Läs mer",
 
       // Features Section
-      "features.title": "Varför SR Player?",
       "feature1.title": "Blixtsnabb start",
       "feature1.description": "Startar på under 1 sekund. Ingen väntan, bara direkt tillgång till dina favoritkanaler.",
       "feature2.title": "Ultra-kompakt",
@@ -80,10 +75,6 @@ const resources = {
   },
   en: {
     translation: {
-      // Header
-      "header.search": "Search...",
-      "header.signIn": "Sign in",
-
       // Hero Section
       "hero.title": "SR Player",
       "hero.subtitle": "Lightning-fast radio from Swedish Radio",
@@ -92,7 +83,6 @@ const resources = {
       "hero.cta.learnMore": "Learn more",
 
       // Features Section
-      "features.title": "Why SR Player?",
       "feature1.title": "Instant launch",
       "feature1.description": "Starts in under 1 second. No waiting, just instant access to your favorite channels.",
       "feature2.title": "Ultra-compact",

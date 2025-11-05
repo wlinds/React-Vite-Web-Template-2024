@@ -12,7 +12,7 @@ const PortalLanding = () => {
   const handleDownload = async () => {
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const response = await fetch(`${supabaseUrl}/functions/v1/track-download`, {
+      await fetch(`${supabaseUrl}/functions/v1/track-download`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,12 +22,8 @@ const PortalLanding = () => {
           version: 'v0.1.0',
         }),
       });
-
-      if (!response.ok) {
-        console.error('Error tracking download:', await response.text());
-      }
     } catch (err) {
-      console.error('Failed to track download:', err);
+      // Silently fail - download tracking is not critical
     } finally {
       window.open(DOWNLOAD_URL, '_blank');
     }
@@ -76,7 +72,7 @@ const PortalLanding = () => {
         </div>
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 lg:mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12 lg:mt-20">
           {[
             {
               icon: <Zap className="w-8 h-8 text-brand-400" />,
@@ -99,7 +95,7 @@ const PortalLanding = () => {
               description: t('feature4.description')
             }
           ].map((feature, index) => (
-            <div key={index} className="bg-gray-900/50 p-6 rounded-lg hover:bg-gray-900 transition-colors border border-gray-800/50">
+            <div key={index} className="bg-gray-900/50 p-6 rounded-lg border border-gray-800/50">
               {feature.icon}
               <h3 className="text-lg font-semibold mt-4">{feature.title}</h3>
               <p className="text-gray-400 text-sm mt-2">{feature.description}</p>
