@@ -1,129 +1,153 @@
 // PortalLanding.jsx
-import React from 'react';
-import { Zap } from 'lucide-react';
+import { Zap, HardDrive, Gauge, Leaf, Download, Code2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import Header from './Header';
-<ChartColumnDecreasing />
-import { ChartColumnDecreasing, UserCheck, AudioLines, Github, Globe } from 'lucide-react';
+
+const DOWNLOAD_URL = 'https://github.com/wlinds/SR-Player/releases/tag/v0.1.0';
+const GITHUB_URL = 'https://github.com/wlinds/SR-Player';
 
 const PortalLanding = () => {
-    return (
-      <div className="min-h-screen bg-gray-900 text-white">
-        <Header />
-  
-        {/* Hero Section */}
-        <div className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-12">
-            <div className="space-y-6">
-              <h1 className="text-4xl lg:text-6xl font-bold">
-                <span className="text-lime-400">PineconePortal</span>
-                <br />
-                Next Generation
-                <br />
-                Audio Distribution
-              </h1>
-              
-              <div className="inline-block bg-gray-800/50 px-4 py-2 rounded-md">
-                A modern audio distribution service
-              </div>
-              
-              <div className="flex flex-wrap gap-4">
-                <button className="bg-lime-400 text-gray-900 px-6 py-2 rounded-full font-medium">
-                  Get Started
-                </button>
-                <button className="bg-gray-800 px-6 py-2 rounded-full font-medium">
-                  Features
-                </button>
-                <button className="bg-gray-800 px-6 py-2 rounded-full font-medium">
-                  Why Pinecone?
-                </button>
-                <button className="bg-gray-800 px-6 py-2 rounded-full font-medium">
-                  View on GitHub
-                </button>
-              </div>
+  const { t } = useTranslation();
+
+  const handleDownload = async () => {
+    try {
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      const response = await fetch(`${supabaseUrl}/functions/v1/track-download`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({
+          version: 'v0.1.0',
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Error tracking download:', await response.text());
+      }
+    } catch (err) {
+      console.error('Failed to track download:', err);
+    } finally {
+      window.open(DOWNLOAD_URL, '_blank');
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#0a0e1a] text-white">
+      <Header />
+
+      {/* Hero Section */}
+      <div className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-12">
+          <div className="space-y-6 lg:w-[55%]">
+            <h1 className="text-4xl lg:text-6xl font-bold">
+              <span className="text-brand-400">{t('hero.title')}</span>
+              <br />
+              {t('hero.subtitle')}
+            </h1>
+
+            <p className="text-gray-300 text-lg leading-relaxed">
+              {t('hero.description')}
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <button
+                onClick={handleDownload}
+                className="bg-brand-400 text-gray-900 px-6 py-2 rounded-full font-medium hover:bg-brand-500 transition-colors flex items-center gap-2"
+              >
+                <Download className="w-5 h-5" />
+                {t('hero.cta.download')}
+              </button>
+              <button className="bg-gray-800 px-6 py-2 rounded-full font-medium hover:bg-gray-700 transition-colors">
+                {t('hero.cta.learnMore')}
+              </button>
+            </div>
           </div>
-            <div className="flex justify-center lg:justify-end">
-              <img src="pinecone_beta.png" className="w-48 h-48 lg:w-64 lg:h-64" alt="Pinecone Beta" />
-            </div>
-            </div>
-            
-  
-          {/* Feature Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 lg:mt-20">
-            {[
-              {
-                icon: <AudioLines className="w-8 h-8 text-purple-400" />,
-                title: "Release on all platforms",
-                description: "Find the best platforms your audience."
-              },
-              {
-                icon: <ChartColumnDecreasing className="w-8 h-8 rounded flex items-center justify-center" />,
-                title: "Measure your audience",
-                description: "Use the dashboard to view plots and important listener metrics."
-              },
-              {
-                icon: <Zap className="w-8 h-8 text-yellow-400" />,
-                title: "Keep up with new trends",
-                description: "Follow genre specific trends in social media."
-              },
-              {
-                icon: <UserCheck className="w-8 h-8 flex items-center justify-center"/>,
-                title: "Manage your artists",
-                description: "Schedule releases, ad campaigns and plan tours."
-              }
-            ].map((feature, index) => (
-              <div key={index} className="bg-gray-800/50 p-6 rounded-lg">
-                {feature.icon}
-                <h3 className="text-lg font-semibold mt-4">{feature.title}</h3>
-                <p className="text-gray-400 text-sm mt-2">{feature.description}</p>
-              </div>
-            ))}
+
+          {/* Featured Image */}
+          <div className="flex justify-center lg:justify-end lg:w-[45%]">
+            <img
+              src="/images/sr-player-025-11-04.png"
+              className="w-full max-w-md lg:max-w-lg rounded-lg shadow-2xl border border-gray-800"
+              alt="SR Player Interface"
+            />
           </div>
         </div>
-  
-        {/* Featured Artist Section */}
-        <div className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
-          <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Featured Artist</h2>
-            <p className="text-gray-400">Spotlight on creators using Pinecone Portal</p>
-          </div>
-  
-          <div className="max-w-2xl mx-auto">
-            {/* Single Featured Artist Card */}
-            <div className="bg-gray-800/50 rounded-lg overflow-hidden group hover:bg-gray-800 transition-all">
-              <div className="flex flex-col sm:flex-row items-center p-4 sm:p-6 gap-4 sm:gap-8">
-                {/* Image Container */}
-                <div className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0">
-                  <img 
-                    src="lindstedt-leaf-logo.png" 
-                    alt="Lindstedt"
-                    className="w-full h-full object-contain invert opacity-80 group-hover:opacity-100 transition-opacity"
-                  />
-                </div>
-                
-                {/* Artist Info */}
-                <div className="flex-grow text-center sm:text-left">
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-2">Lindstedt</h3>
-                  <div className="flex flex-col gap-2 text-gray-400 mb-4">
-                    <span className="text-lg">Electronic</span>
-                    <span>10.2K followers</span>
-                  </div>
-                  <button className="px-6 py-2 bg-lime-400 text-gray-900 rounded-full font-medium hover:bg-lime-500 transition-colors">
-                    View Profile
-                  </button>
-                </div>
-              </div>
+
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 lg:mt-20">
+          {[
+            {
+              icon: <Zap className="w-8 h-8 text-brand-400" />,
+              title: t('feature1.title'),
+              description: t('feature1.description')
+            },
+            {
+              icon: <HardDrive className="w-8 h-8 text-blue-400" />,
+              title: t('feature2.title'),
+              description: t('feature2.description')
+            },
+            {
+              icon: <Gauge className="w-8 h-8 text-purple-400" />,
+              title: t('feature3.title'),
+              description: t('feature3.description')
+            },
+            {
+              icon: <Leaf className="w-8 h-8 text-green-400" />,
+              title: t('feature4.title'),
+              description: t('feature4.description')
+            }
+          ].map((feature, index) => (
+            <div key={index} className="bg-gray-900/50 p-6 rounded-lg hover:bg-gray-900 transition-colors border border-gray-800/50">
+              {feature.icon}
+              <h3 className="text-lg font-semibold mt-4">{feature.title}</h3>
+              <p className="text-gray-400 text-sm mt-2">{feature.description}</p>
             </div>
-  
-            {/* More Artists Button */}
-            <div className="text-center mt-8">
-              <button className="bg-gray-800 px-8 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors">
-                Discover More Artists
-              </button>
+          ))}
+        </div>
+      </div>
+
+      {/* About Section */}
+      <div className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
+        <div className="text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">{t('about.title')}</h2>
+          <p className="text-gray-300 text-lg leading-relaxed">
+            {t('about.description')}
+          </p>
+        </div>
+      </div>
+
+      {/* Developer Section */}
+      <div className="bg-gray-950/50 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-8">
+            <div className="lg:w-1/4 flex justify-center lg:justify-start">
+              <Code2 className="w-24 h-24 text-brand-400" />
+            </div>
+            <div className="lg:w-3/4 space-y-4">
+              <h2 className="text-3xl lg:text-4xl font-bold">{t('developer.title')}</h2>
+              <p className="text-brand-400 text-xl font-medium">{t('developer.subtitle')}</p>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                {t('developer.description')}
+              </p>
+              <div className="pt-4">
+                <a
+                  href={GITHUB_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-600 transition-colors"
+                >
+                  <Code2 className="w-5 h-5" />
+                  {t('developer.cta')}
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    );
-  };
-  
+    </div>
+  );
+};
+
   export default PortalLanding;

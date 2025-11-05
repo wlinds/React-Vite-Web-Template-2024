@@ -1,18 +1,20 @@
 // Header.jsx
-import React, { useState } from 'react';
-import { 
-  Search, 
-  Github, 
-  Moon, 
-  Twitter, 
-  MessageSquare,
+import { useState } from 'react';
+import {
   Menu,
-  X
+  X,
+  Languages
 } from 'lucide-react';
-import { AuthButton } from './AuthModal';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'sv' ? 'en' : 'sv';
+    i18n.changeLanguage(newLang);
+  };
 
   return (
     <nav className="border-b border-gray-800">
@@ -20,40 +22,29 @@ const Header = () => {
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center space-x-4">
           <div className="flex items-center">
-            <img src="pinecone_beta.png" className="w-5 h-5" />
-            <a href="/"><span className="ml-2 font-semibold">PineconePortal</span></a>
-          </div>
-          <div className="hidden md:flex items-center px-3 py-1 bg-gray-800 rounded-md">
-            <Search className="w-4 h-4 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search" 
-              className="bg-transparent border-none outline-none ml-2 text-sm w-32 lg:w-auto"
-            />
-            <span className="text-xs text-gray-500 ml-2">⌘K</span>
-          </div>
-        </div>
-        
-        <div className="hidden md:flex items-center space-x-4">
-          <div className="space-x-2">
-            <button className="px-3 py-1 text-sm">Guide</button>
-            <button className="px-3 py-1 text-sm">API</button>
-            <button className="px-3 py-1 text-sm hidden lg:inline">Config</button>
-            <button className="px-3 py-1 text-sm hidden lg:inline">Browser Mode</button>
-            <button className="px-3 py-1 text-sm hidden lg:inline">Resources</button>
-            <button className="px-3 py-1 text-sm">v2.1.4</button>
-          </div>
-            <AuthButton />
-          <div className="flex items-center space-x-2">
-            <Moon className="w-5 h-5" />
-            <Twitter className="w-5 h-5 hidden sm:block" />
-            <MessageSquare className="w-5 h-5 hidden sm:block" />
-            <Github className="w-5 h-5" />
+            <a href="/" className="flex items-center gap-3">
+              <img
+                src="/images/icon.png"
+                alt="SR Player"
+                className="w-10 h-10 rounded-lg"
+              />
+              <span className="font-semibold text-lg">Player</span>
+            </a>
           </div>
         </div>
 
+        <div className="hidden md:flex items-center">
+          <button
+            onClick={toggleLanguage}
+            className="px-3 py-1 text-sm bg-gray-800 hover:bg-gray-700 rounded-md flex items-center space-x-2 transition-colors"
+          >
+            <Languages className="w-4 h-4" />
+            <span>{i18n.language === 'sv' ? 'EN' : 'SV'}</span>
+          </button>
+        </div>
+
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
@@ -64,21 +55,13 @@ const Header = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden border-t border-gray-800 px-4 py-2">
-          <div className="flex items-center px-3 py-1 bg-gray-800 rounded-md mb-4">
-            <Search className="w-4 h-4 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search" 
-              className="bg-transparent border-none outline-none ml-2 text-sm w-full"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <button className="px-3 py-2 text-sm text-left hover:bg-gray-800 rounded">Guide</button>
-            <button className="px-3 py-2 text-sm text-left hover:bg-gray-800 rounded">API</button>
-            <button className="px-3 py-2 text-sm text-left hover:bg-gray-800 rounded">Config</button>
-            <button className="px-3 py-2 text-sm text-left hover:bg-gray-800 rounded">Browser Mode</button>
-            <button className="px-3 py-2 text-sm text-left hover:bg-gray-800 rounded">Resources</button>
-          </div>
+          <button
+            onClick={toggleLanguage}
+            className="px-3 py-2 text-sm text-left hover:bg-gray-800 rounded flex items-center space-x-2 w-full"
+          >
+            <Languages className="w-4 h-4" />
+            <span>{i18n.language === 'sv' ? 'English' : 'Svenska'}</span>
+          </button>
         </div>
       )}
     </nav>
