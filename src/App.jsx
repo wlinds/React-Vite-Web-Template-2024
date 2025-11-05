@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { TermsPage, PrivacyPage } from './components/Legal';
 import PortalLanding from './components/PortalLanding'
 import Footer from './components/Footer';
 
@@ -18,8 +17,6 @@ const App = () => {
                 </>
               }
             />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/policy" element={<PrivacyPage />} />
           </Routes>
         </BrowserRouter>
       </Suspense>
