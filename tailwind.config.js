@@ -7,6 +7,11 @@ export default {
     theme: {
       extend: {
         colors: {
+          'brand': {
+            DEFAULT: '#EFA669',
+            400: '#EFA669',
+            500: '#E89552',
+          },
           'lime': {
             400: '#a3e635',
           },
