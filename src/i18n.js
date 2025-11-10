@@ -8,7 +8,7 @@ const resources = {
       "hero.title": "SR Player",
       "hero.subtitle": "Blixtsnabb radio från Sveriges Radio",
       "hero.description": "Sveriges snabbaste radiospelare. Startar på under en sekund. Alla kanaler från Sveriges Radio i kristallklar ljudkvalitet, paketerat i en ultralätt app som tar mindre än 5 MB lagringsutrymme.",
-      "hero.cta.download": "Ladda ner v0.1.0",
+      "hero.cta.download": "Ladda ner v0.4.0",
       "hero.cta.learnMore": "Var med och utveckla på GitHub",
 
       // Features Section
@@ -20,6 +20,10 @@ const resources = {
       "feature3.description": "Blixtsnabb kanalväxling och responsiv design som fungerar perfekt även på äldre enheter.",
       "feature4.title": "Minimalt batteri",
       "feature4.description": "Optimerad för låg batterianvändning. Lyssna längre utan att ladda.",
+
+      // Cross-Platform Section
+      "crossplatform.title": "Fungerar på alla plattformar",
+      "crossplatform.description": "SR Player finns tillgänglig för macOS, Linux och Windows. Samma snabba, lättviktiga upplevelse oavsett vilken plattform du använder. Native app för varje system - ingen Electron, bara ren prestanda.",
 
       // About Section
       "about.title": "Sveriges lättaste radiospelare",
@@ -79,7 +83,7 @@ const resources = {
       "hero.title": "SR Player",
       "hero.subtitle": "Lightning-fast radio from Swedish Radio",
       "hero.description": "Sweden's fastest radio player. Launches in under a second. All Swedish Radio channels in crystal-clear audio, packed in an ultra-lightweight app taking less than 5 MB storage.",
-      "hero.cta.download": "Download v0.1.0",
+      "hero.cta.download": "Download v0.4.0",
       "hero.cta.learnMore": "Contribute on GitHub",
 
       // Features Section
@@ -91,6 +95,10 @@ const resources = {
       "feature3.description": "Lightning-fast channel switching and responsive design that works perfectly even on older devices.",
       "feature4.title": "Minimal battery",
       "feature4.description": "Optimized for low battery consumption. Listen longer without charging.",
+
+      // Cross-Platform Section
+      "crossplatform.title": "Works on all platforms",
+      "crossplatform.description": "SR Player is available for macOS, Linux, and Windows. The same fast, lightweight experience regardless of which platform you use. Native app for each system - no Electron, just pure performance.",
 
       // About Section
       "about.title": "Sweden's lightest radio player",

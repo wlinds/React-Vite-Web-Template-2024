@@ -1,5 +1,7 @@
 // PortalLanding.jsx
-import { Zap, HardDrive, Gauge, Leaf, Download, Code2 } from 'lucide-react';
+import { Zap, HardDrive, Gauge, Leaf, Download, Code2, Monitor } from 'lucide-react';
+import { SiApple, SiUbuntu } from 'react-icons/si';
+import { FaWindows } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import Header from './Header';
 
@@ -125,6 +127,46 @@ const PortalLanding = () => {
           <p className="text-gray-300 text-lg leading-relaxed">
             {t('about.description')}
           </p>
+        </div>
+      </div>
+
+      {/* Cross-Platform Section */}
+      <div className="bg-gray-900/30 border-y border-gray-800">
+        <div className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-8">
+            <div className="lg:w-1/4 flex justify-center lg:justify-start">
+              <Monitor className="w-24 h-24 text-brand-400" />
+            </div>
+            <div className="lg:w-3/4 space-y-4">
+              <h2 className="text-3xl lg:text-4xl font-bold">{t('crossplatform.title')}</h2>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                {t('crossplatform.description')}
+              </p>
+              <div className="flex gap-6 pt-4">
+                <div className="flex items-center gap-2 text-gray-400">
+                  <SiApple className="w-7 h-7" />
+                  <span className="font-medium">macOS</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-400">
+                  <SiUbuntu className="w-7 h-7" />
+                  <span className="font-medium">Linux / Ubuntu</span>
+                </div>
+                <div className="flex items-center gap-2 text-gray-400">
+                  <FaWindows className="w-7 h-7" />
+                  <span className="font-medium">Windows</span>
+                </div>
+              </div>
+              <div className="pt-4 flex justify-left">
+                <button
+                  onClick={handleDownload}
+                  className="bg-brand-400 text-gray-900 px-6 py-2 rounded-full font-medium hover:bg-brand-500 transition-colors inline-flex items-center gap-2"
+                >
+                  <Download className="w-5 h-5" />
+                  {t('hero.cta.download')}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
