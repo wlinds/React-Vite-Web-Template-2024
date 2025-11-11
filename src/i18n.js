@@ -8,7 +8,7 @@ const resources = {
       "hero.title": "SR Player",
       "hero.subtitle": "Blixtsnabb radio från Sveriges Radio",
       "hero.description": "Sveriges snabbaste radiospelare. Startar på under en sekund. Alla kanaler från Sveriges Radio i kristallklar ljudkvalitet, paketerat i en ultralätt app som tar mindre än 5 MB lagringsutrymme.",
-      "hero.cta.download": "Ladda ner v0.4.0",
+      "hero.cta.download": "Börja lyssna",
       "hero.cta.learnMore": "Var med och utveckla på GitHub",
 
       // Features Section
@@ -83,7 +83,7 @@ const resources = {
       "hero.title": "SR Player",
       "hero.subtitle": "Lightning-fast radio from Swedish Radio",
       "hero.description": "Sweden's fastest radio player. Launches in under a second. All Swedish Radio channels in crystal-clear audio, packed in an ultra-lightweight app taking less than 5 MB storage.",
-      "hero.cta.download": "Download v0.4.0",
+      "hero.cta.download": "Start listening",
       "hero.cta.learnMore": "Contribute on GitHub",
 
       // Features Section
