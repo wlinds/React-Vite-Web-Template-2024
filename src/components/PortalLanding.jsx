@@ -5,7 +5,7 @@ import { FaWindows } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import Header from './Header';
 
-const DOWNLOAD_URL = 'https://github.com/wlinds/SR-Player/releases/tag/v0.4.0';
+const DOWNLOAD_URL = 'https://github.com/wlinds/SR-Player/releases/latest';
 const GITHUB_URL = 'https://github.com/wlinds/SR-Player';
 
 const PortalLanding = () => {
@@ -14,7 +14,7 @@ const PortalLanding = () => {
   const handleDownload = () => {
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const data = JSON.stringify({ version: 'v0.4.0' });
+      const data = JSON.stringify({ version: 'v0.5.0' });
 
       // Use sendBeacon for non-blocking tracking that works even when navigating away
       if (navigator.sendBeacon) {
@@ -80,7 +80,7 @@ const PortalLanding = () => {
           {/* Featured Image */}
           <div className="flex justify-center lg:justify-end lg:w-[45%]">
             <img
-              src="/images/sr-player-025-11-04.png"
+              src="/images/sr-player-v0.5.0-25-11-11.png"
               className="w-full max-w-md lg:max-w-lg rounded-lg shadow-2xl border border-gray-800"
               alt="SR Player Interface"
             />
