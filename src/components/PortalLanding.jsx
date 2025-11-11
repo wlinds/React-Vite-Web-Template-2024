@@ -5,7 +5,7 @@ import { FaWindows } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import Header from './Header';
 
-const DOWNLOAD_URL = 'https://github.com/wlinds/SR-Player/releases/tag/v0.1.0';
+const DOWNLOAD_URL = 'https://github.com/wlinds/SR-Player/releases/tag/v0.4.0';
 const GITHUB_URL = 'https://github.com/wlinds/SR-Player';
 
 const PortalLanding = () => {
@@ -14,7 +14,7 @@ const PortalLanding = () => {
   const handleDownload = () => {
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const data = JSON.stringify({ version: 'v0.1.0' });
+      const data = JSON.stringify({ version: 'v0.4.0' });
 
       // Use sendBeacon for non-blocking tracking that works even when navigating away
       if (navigator.sendBeacon) {
