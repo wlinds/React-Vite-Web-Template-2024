@@ -1,5 +1,5 @@
 // PortalLanding.jsx
-import { Zap, HardDrive, Gauge, Leaf, Download, Code2, Monitor } from 'lucide-react';
+import { Zap, HardDrive, Gauge, Leaf, Download, Code2, Monitor, Shield } from 'lucide-react';
 import { SiApple, SiUbuntu } from 'react-icons/si';
 import { FaWindows } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
@@ -166,6 +166,22 @@ const PortalLanding = () => {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Privacy & Integrity Section */}
+      <div className="max-w-6xl mx-auto px-4 py-12 lg:py-20">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-8">
+          <div className="lg:w-1/4 flex justify-center lg:justify-start">
+            <Shield className="w-24 h-24 text-brand-400" />
+          </div>
+          <div className="lg:w-3/4 space-y-4">
+            <h2 className="text-3xl lg:text-4xl font-bold">{t('privacy.title')}</h2>
+            <p className="text-brand-400 text-xl font-medium">{t('privacy.subtitle')}</p>
+            <p className="text-gray-300 text-lg leading-relaxed">
+              {t('privacy.description')}
+            </p>
           </div>
         </div>
       </div>

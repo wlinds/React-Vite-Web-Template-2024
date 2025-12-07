@@ -25,6 +25,11 @@ const resources = {
       "crossplatform.title": "Fungerar på alla plattformar",
       "crossplatform.description": "SR Player finns tillgänglig för macOS, Linux och Windows. Samma snabba, lättviktiga upplevelse oavsett vilken plattform du använder. Native app för varje system - ingen Electron, bara ren prestanda.",
 
+      // Privacy & Integrity Section
+      "privacy.title": "Din integritet respekteras",
+      "privacy.subtitle": "Absolut noll användarspårning",
+      "privacy.description": "SR Player samlar inte in någon användardata överhuvudtaget. Inga cookies, ingen spårning, ingen analys av ditt lyssningsbeteende. Vi räknar endast antal nedladdningar - inget annat. Din musik, dina val, din integritet.",
+
       // About Section
       "about.title": "Sveriges lättaste radiospelare",
       "about.description": "SR Player är optimerad för hastighet. Varje detalj är finslipad för att ge dig den snabbaste och mest responsiva radioupplevelsen. Mindre än 5 MB installationsstorlek, men med all funktionalitet du behöver. Perfekt för dig som värdesätter prestanda och enkelhet.",
@@ -99,6 +104,11 @@ const resources = {
       // Cross-Platform Section
       "crossplatform.title": "Works on all platforms",
       "crossplatform.description": "SR Player is available for macOS, Linux, and Windows. The same fast, lightweight experience regardless of which platform you use. Native app for each system - no Electron, just pure performance.",
+
+      // Privacy & Integrity Section
+      "privacy.title": "Your privacy is respected",
+      "privacy.subtitle": "Absolutely zero user tracking",
+      "privacy.description": "SR Player does not collect any user data whatsoever. No cookies, no tracking, no analysis of your listening behavior. We only count the number of downloads - nothing else. Your music, your choices, your privacy.",
 
       // About Section
       "about.title": "Sweden's lightest radio player",
