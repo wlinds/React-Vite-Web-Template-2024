@@ -1,0 +1,26 @@
+name: Update Version from Release
+
+on:
+  repository_dispatch:
+    types: [update-version]
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update version in Download.jsx
+        run: |
+          VERSION="${{ github.event.client_payload.version }}"
+          sed -i "s/const VERSION = 'v[^']*'/const VERSION = '${VERSION}'/" src/components/Download.jsx
+          echo "Updated to version: $VERSION"
+          grep "const VERSION" src/components/Download.jsx
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/Download.jsx
+          git diff --staged --quiet || git commit -m "chore: bump version to ${{ github.event.client_payload.version }}"
+          git push
