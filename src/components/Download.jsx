@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 
-const PLACEHOLDER_DOWNLOAD_URL = 'https://github.com/wlinds/SR-Player/releases/tag/v0.6.33';
+const VERSION = 'v0.6.33';
+const GITHUB_RELEASE_BASE = `https://github.com/wlinds/SR-Player/releases/download/${VERSION}`;
 
 const Download = () => {
   const { t } = useTranslation();
@@ -45,35 +46,35 @@ const Download = () => {
       id: 'macos',
       name: 'macOS',
       icon: <SiApple className="w-8 h-8" />,
-      version: 'v0.6.33',
+      version: VERSION,
       size: '4.61 MB',
       architecture: 'Universal (Intel + Apple Silicon)',
-      downloadUrl: PLACEHOLDER_DOWNLOAD_URL,
+      downloadUrl: `${GITHUB_RELEASE_BASE}/SR-Player-${VERSION}-macos.zip`,
     },
     {
       id: 'windows',
       name: 'Windows',
       icon: <FaWindows className="w-8 h-8" />,
-      version: 'v0.6.33',
+      version: VERSION,
       size: '4.14 MB',
       architecture: 'x64',
-      downloadUrl: PLACEHOLDER_DOWNLOAD_URL,
+      downloadUrl: `${GITHUB_RELEASE_BASE}/sr-player-${VERSION}-setup.msi`,
     },
     {
       id: 'linux',
       name: 'Linux',
       icon: <SiUbuntu className="w-8 h-8" />,
-      version: 'v0.6.33',
+      version: VERSION,
       size: '5.19 MB',
-      architecture: 'x64 (AppImage)',
-      downloadUrl: PLACEHOLDER_DOWNLOAD_URL,
+      architecture: 'x64',
+      downloadUrl: `${GITHUB_RELEASE_BASE}/sr-player-${VERSION}-linux.tar.gz`,
     },
   ];
 
   const handleDownload = (url, osId) => {
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const data = JSON.stringify({ version: 'v0.6.33', os: osId });
+      const data = JSON.stringify({ version: VERSION, os: osId });
 
       if (navigator.sendBeacon) {
         const blob = new Blob([data], { type: 'application/json' });
@@ -90,7 +91,8 @@ const Download = () => {
       // Silently fail - download tracking is not critical
     }
 
-    window.open(url, '_blank');
+    // Trigger direct download
+    window.location.href = url;
   };
 
   return (
