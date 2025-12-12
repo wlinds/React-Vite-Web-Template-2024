@@ -3,38 +3,17 @@ import { Zap, HardDrive, Gauge, Leaf, Download, Code2, Monitor, Shield } from 'l
 import { SiApple, SiUbuntu } from 'react-icons/si';
 import { FaWindows } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 
-const DOWNLOAD_URL = 'https://github.com/wlinds/SR-Player/releases/latest';
 const GITHUB_URL = 'https://github.com/wlinds/SR-Player';
 
 const PortalLanding = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleDownload = () => {
-    try {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const data = JSON.stringify({ version: 'v0.5.0' });
-
-      // Use sendBeacon for non-blocking tracking that works even when navigating away
-      if (navigator.sendBeacon) {
-        const blob = new Blob([data], { type: 'application/json' });
-        navigator.sendBeacon(`${supabaseUrl}/functions/v1/track-download`, blob);
-      } else {
-        // Fallback: fire-and-forget fetch
-        fetch(`${supabaseUrl}/functions/v1/track-download`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: data,
-          keepalive: true
-        }).catch(() => {});
-      }
-    } catch (err) {
-      // Silently fail - download tracking is not critical
-    }
-
-    // Open immediately in the same synchronous call stack to avoid popup blocker
-    window.open(DOWNLOAD_URL, '_blank');
+    navigate('/download');
   };
 
   return (

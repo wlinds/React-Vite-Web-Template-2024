@@ -40,6 +40,17 @@ const resources = {
       "developer.description": "SR Player är fri programvara med öppen källkod. Skriven i Rust för minimal minnesanvändning och blixtsnabb exekvering. Hela projektet är tillgängligt på GitHub för utvecklare som vill bidra, lära sig eller bygga sina egna anpassade versioner.",
       "developer.cta": "Se på GitHub",
 
+      // Download Page
+      "download.title": "Ladda ner SR Player",
+      "download.subtitle": "Välj version för ditt operativsystem",
+      "download.back": "Tillbaka",
+      "download.recommended": "Rekommenderad",
+      "download.version": "Version",
+      "download.size": "Storlek",
+      "download.architecture": "Arkitektur",
+      "download.downloadButton": "Ladda ner",
+      "download.releaseNotes": "Se alla versioner och ändringsloggar på",
+
       // Footer
       "footer.rights": "Med stöd av Sveriges Radio API",
       "footer.terms": "Villkor",
@@ -119,6 +130,17 @@ const resources = {
       "developer.subtitle": "Built with modern tools for maximum performance",
       "developer.description": "SR Player is free and open source software. Written in Rust for minimal memory usage and lightning-fast execution. The entire project is available on GitHub for developers who want to contribute, learn, or build their own custom versions.",
       "developer.cta": "View on GitHub",
+
+      // Download Page
+      "download.title": "Download SR Player",
+      "download.subtitle": "Choose the version for your operating system",
+      "download.back": "Back",
+      "download.recommended": "Recommended",
+      "download.version": "Version",
+      "download.size": "Size",
+      "download.architecture": "Architecture",
+      "download.downloadButton": "Download",
+      "download.releaseNotes": "View all versions and changelog on",
 
       // Footer
       "footer.rights": "Powered by Swedish Radio API",

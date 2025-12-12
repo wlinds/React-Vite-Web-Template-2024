@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PortalLanding from './components/PortalLanding'
+import Download from './components/Download';
 import Footer from './components/Footer';
 
 const App = () => {
@@ -17,10 +18,19 @@ const App = () => {
                 </>
               }
             />
+            <Route
+              path="/download"
+              element={
+                <>
+                  <Download />
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </Suspense>
     );
   };
-  
+
   export default App;
