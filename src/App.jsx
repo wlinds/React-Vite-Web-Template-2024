@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PortalLanding from './components/PortalLanding'
 import Download from './components/Download';
+import Feedback from './components/Feedback';
 import Footer from './components/Footer';
 
 const App = () => {
@@ -23,6 +24,15 @@ const App = () => {
               element={
                 <>
                   <Download />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/feedback"
+              element={
+                <>
+                  <Feedback />
                   <Footer />
                 </>
               }
