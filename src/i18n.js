@@ -296,14 +296,26 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'sv', // default language is Swedish
-    fallbackLng: 'sv',
+    lng: 'en', // default to English, will be overridden by geo-detection
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     },
     react: {
       useSuspense: true
     }
+  });
+
+// Detect country via IP and switch to Swedish if in Sweden
+fetch('https://ipapi.co/country_code/')
+  .then(res => res.text())
+  .then(countryCode => {
+    if (countryCode.trim() === 'SE') {
+      i18n.changeLanguage('sv');
+    }
+  })
+  .catch(() => {
+    // Silently fall back to default (English)
   });
 
 export default i18n;
