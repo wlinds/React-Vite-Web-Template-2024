@@ -7,13 +7,13 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 
-const VERSION = 'v0.6.33';
-const GITHUB_RELEASE_BASE = `https://github.com/wlinds/SR-Player/releases/download/${VERSION}`;
+const FALLBACK_VERSION = 'v0.7.1';
 
 const Download = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [userOS, setUserOS] = useState(null);
+  const [version, setVersion] = useState(FALLBACK_VERSION);
 
   useEffect(() => {
     const detectOS = () => {
@@ -39,42 +39,55 @@ const Download = () => {
     };
 
     setUserOS(detectOS());
+
+    fetch('https://api.github.com/repos/wlinds/SR-Player/releases/latest')
+      .then(res => res.json())
+      .then(data => {
+        if (data.tag_name) {
+          setVersion(data.tag_name);
+        }
+      })
+      .catch(() => {
+        // Fall back to hardcoded version
+      });
   }, []);
+
+  const releaseBase = `https://github.com/wlinds/SR-Player/releases/download/${version}`;
 
   const versions = [
     {
       id: 'macos',
       name: 'macOS',
       icon: <SiApple className="w-8 h-8" />,
-      version: VERSION,
+      version: version,
       size: '4.61 MB',
       architecture: 'Universal (Intel + Apple Silicon)',
-      downloadUrl: `${GITHUB_RELEASE_BASE}/SR-Player-${VERSION}-macos.zip`,
+      downloadUrl: `${releaseBase}/SR-Player-${version}-macos.zip`,
     },
     {
       id: 'windows',
       name: 'Windows',
       icon: <FaWindows className="w-8 h-8" />,
-      version: VERSION,
+      version: version,
       size: '4.14 MB',
       architecture: 'x64',
-      downloadUrl: `${GITHUB_RELEASE_BASE}/sr-player-${VERSION}-setup.msi`,
+      downloadUrl: `${releaseBase}/sr-player-${version}-setup.msi`,
     },
     {
       id: 'linux',
       name: 'Linux',
       icon: <SiUbuntu className="w-8 h-8" />,
-      version: VERSION,
+      version: version,
       size: '5.19 MB',
       architecture: 'x64',
-      downloadUrl: `${GITHUB_RELEASE_BASE}/sr-player-${VERSION}-linux.tar.gz`,
+      downloadUrl: `${releaseBase}/sr-player-${version}-linux.tar.gz`,
     },
   ];
 
   const handleDownload = (url, osId) => {
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const data = JSON.stringify({ version: VERSION, os: osId });
+      const data = JSON.stringify({ version: version, os: osId });
 
       if (navigator.sendBeacon) {
         const blob = new Blob([data], { type: 'application/json' });
